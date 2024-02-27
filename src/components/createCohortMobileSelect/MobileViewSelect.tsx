@@ -7,7 +7,7 @@ import EmptyBody from "@/components/emptyBody/EmptyBody";
 
 
 
-const CreateCohortMobileView=()=>{
+const MobileViewSelect=()=>{
     const [cohort, setCohort] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -34,4 +34,4 @@ const CreateCohortMobileView=()=>{
         </div>
     );
 }
-export default CreateCohortMobileView;
+export default MobileViewSelect;

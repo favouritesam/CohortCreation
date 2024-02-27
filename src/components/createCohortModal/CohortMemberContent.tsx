@@ -1,13 +1,19 @@
 import SearchIcon from "@/components/icons/SearchIcon";
-import KebabIcon from "@/components/icons/KebabIcon";
 import CohortTable from "@/components/cohortTable/CohortTable";
 import React, {useState} from "react";
 import KebabModal from "@/components/kebabModal/KebabModal";
+import CreateCohortModal from "@/components/createCohortModal/CreateCohortModal";
 interface CohortListProps {
-    cohorts: any
+    allCohorts: any
 }
 
-const CohortMemberContent : React.FC<CohortListProps> = ({cohorts}) => {
+const CohortMemberContent : React.FC<CohortListProps> = ({allCohorts}) => {
+    console.log('cohort member content');
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleCohortModal = () => {
+        setOpenModal(true);
+    };
 
 
 
@@ -29,14 +35,15 @@ const CohortMemberContent : React.FC<CohortListProps> = ({cohorts}) => {
                     </span>
 
                     <div className="mt-10 flex gap-6">
-                        <button className="border w-44 h-12 rounded-xl text-[#FFFFFF] bg-[#008EEF]">Create a cohort</button>
+                        <button className="border w-44 h-12 rounded-xl text-[#FFFFFF] bg-[#008EEF]"  onClick={handleCohortModal}>Create a cohort</button>
                         <button className="border w-44 h-12 rounded-xl text-[#142E70] font-bold text-base gap-6 justify-center items-center flex" >More Actions <KebabModal/></button>
-                        </div>
+                    </div>
+                    {openModal && <CreateCohortModal onClose={() => setOpenModal(false)} open={openModal}/>}
                 </div>
 
 
 
-              <CohortTable cohort={cohorts}/>
+              <CohortTable cohort={allCohorts}/>
             </div>
 
         </>

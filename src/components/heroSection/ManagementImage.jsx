@@ -2,7 +2,7 @@ import Image from "next/image";
 import Logo from "@/components/logo/Logo";
 import ArrowIcon from "@/components/icons/ArrowIcon";
 import SemicolonLogo from "@/components/icons/SemicolonLogo";
-import CreateCohortMobileView from "@/components/createCohortMobileView/CreateCohortMobileView";
+import MobileViewSelect from "@/components/createCohortMobileSelect/MobileViewSelect";
 
 
 const ManagementImage = () => {
@@ -34,7 +34,7 @@ const ManagementImage = () => {
                 <div className="p-1 md:hidden"><ArrowIcon/></div>
             </div>
             </div>
-            <CreateCohortMobileView/>
+            <MobileViewSelect/>
         </div>
     )
 }

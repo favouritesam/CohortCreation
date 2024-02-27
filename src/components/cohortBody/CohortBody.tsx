@@ -1,49 +1,13 @@
 import CohortBodyIcon from "@/components/icons/CohortBodyIcon";
 import React, {useState} from "react";
 import CreateCohortModal from "@/components/createCohortModal/CreateCohortModal";
-import UserIcon from "@/components/icons/UserIcon";
-import KebabIcon from "@/components/icons/KebabIcon";
 import CohortMemberContent from "@/components/createCohortModal/CohortMemberContent";
+import CohortTable from "@/components/cohortTable/CohortTable";
 
 const CohortBody =()=>{
     const [isModalClick,setIsModalClick] = useState<boolean>(false);
-    const cohorts=[
-        {
-            image: 'Rectangle.png',
-            name: 'Cohort 2',
-            title: 'Product Design',
-            icon: <UserIcon/>,
-            role: '30 Learners',
-            date:'Created 2nd Jan 2021',
-            kebab:<KebabIcon/>
-        },
-        {
-            image: 'Rectangle.png',
-            name: 'Cohort 2',
-            title: 'Product Design',
-            icon: <UserIcon/>,
-            role: '30 Learners',
-            date:'Created 2nd Jan 2021',
-            kebab:<KebabIcon/>
-        },
-        {
-            image: 'Rectangle.png',
-            name: 'Cohort 2',
-            title: 'Product Design',
-            icon: <UserIcon/>,
-            role: '30 Learners',
-            date:'Created 2nd Jan 2021',
-            kebab:<KebabIcon/>
-        },
-        {
-            image: 'Rectangle.png',
-            name: 'Cohort 2',
-            title: 'Product Design',
-            icon: <UserIcon/>,
-            role: '30 Learners',
-            date:'Created 2nd Jan 2021',
-            kebab:<KebabIcon/>
-        },
+
+    const allCohorts: string | any[]=[
     ]
     const handleShowModal =()=>{
         setIsModalClick(!isModalClick)
@@ -51,7 +15,7 @@ const CohortBody =()=>{
     }
     return(
         <div className="flex justify-items-center justify-center items-center -mt-28">
-            { cohorts.length === 0 ?
+            { allCohorts.length === 0 ?
                 <div className="-mt-32">
                     <span className=" font-extrabold text-lg">Cohorts</span>
                     <div className="justify-center justify-items-center flex-col">
@@ -62,7 +26,7 @@ const CohortBody =()=>{
                 <div className="justify-items-center justify-center flex mt-10">
                     <button className="w-40 h-10 border-solid border rounded-xl bg-[#008EEF] text-[#FFFFFF] " onClick={()=>{handleShowModal()}}>Create a Cohort</button></div>
             </div>
-                {isModalClick === true && <CreateCohortModal open={open}/>}</div> : <CohortMemberContent cohorts={cohorts}/>}
+                {isModalClick === true && <CreateCohortModal open={open}/>}</div> : <CohortMemberContent allCohorts={allCohorts}/>}
 
         </div>
     )

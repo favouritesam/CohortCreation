@@ -4,6 +4,8 @@ import CohortBody from "@/components/cohortBody/CohortBody";
 import Programs from "@/components/program/Programs";
 import Instructors from "@/components/instructor/Instructors";
 import Learners from "@/components/learner/Learners";
+import CohortTable from "@/components/cohortTable/CohortTable";
+import CohortMemberContent from "@/components/createCohortModal/CohortMemberContent";
 
 function SideNavBar(cohorts: any) {
     // @ts-ignore
@@ -13,7 +15,8 @@ function SideNavBar(cohorts: any) {
         case "Cohorts":
             return(
 
-                <CohortBody/>
+                // <CohortTable cohort={cohorts}/>
+                <CohortMemberContent allCohorts={cohorts}/>
             );
         case "programs":
             return(

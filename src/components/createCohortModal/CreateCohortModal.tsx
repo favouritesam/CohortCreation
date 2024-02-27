@@ -3,7 +3,6 @@ import React, {useEffect, useRef, useState} from "react";
 import { Dialog, DialogTitle, DialogContent } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import logo from '../../components/logo/Logo';
 import DotLogo from "@/components/icons/DotLogo";
 import DateComponent from "@/components/date/DateComponent";
 import {FiUpload} from "react-icons/fi";
@@ -13,8 +12,8 @@ import axios from "axios";
 
 
 interface ModalProp {
-    isOpen: boolean;
     onClose: () => void;
+    open: boolean
 }
 
 // @ts-ignore
@@ -31,6 +30,8 @@ const CreateCohortModal = (open:any) => {
     const [programs,setPrograms] = useState<any>([])
     const [modalOpen, setModalOpen] = useState(true);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+
     const [cohortForm, setCohortForm] = useState<CohortObject>({
         cohortName: "",
         description: "",
@@ -96,19 +97,7 @@ const CreateCohortModal = (open:any) => {
     }, []);
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const programsResponse = await axios.get('https://schoolmanagement-production.up.railway.app/api/v1/school/viewAllCohort');
-                console.log('Programs Response:', programsResponse);
-                setPrograms(programsResponse.data);
-            } catch (error) {
-                console.log('Error:', error);
-            }
-        };
 
-        fetchData();
-    }, []);
 
 
 
@@ -118,7 +107,7 @@ const CreateCohortModal = (open:any) => {
     console.log("programs",programs )
 
     const closeModal = () => {
-        setModalOpen(false);
+        setModalOpen(false)
     };
 
 
